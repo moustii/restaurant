@@ -12,9 +12,10 @@ class Model extends Db
     {
         $this->db = Db::getInstance();
         $sql = 'SELECT * FROM meal';
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        return $query;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        return $results;
     }
 
 

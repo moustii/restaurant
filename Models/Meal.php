@@ -4,11 +4,11 @@ namespace App\Models;
 
 class Meal extends Model
 {
-    private $mealId;
-    private $mealName;
-    private $mealDescription;
-    private $mealPicture;
-    private $mealPrice;
+    private $meal_id;
+    private $meal_name;
+    private $meal_description;
+    private $meal_picture;
+    private $meal_price;
 
     public function __construct()
     {
@@ -16,101 +16,101 @@ class Meal extends Model
     }
 
     /**
-     * Get the value of mealId
+     * Get the value of meal_id
      */ 
-    public function getMealId()
+    public function getMeal_id()
     {
-        return $this->mealId;
+        return $this->meal_id;
     }
 
     /**
-     * Set the value of mealId
+     * Set the value of meal_id
      *
      * @return  self
      */ 
-    public function setMealId($mealId): self
+    public function setMeal_id($meal_id): self
     {
-        $this->mealId = $mealId;
+        $this->meal_id = $meal_id;
 
         return $this;
     }
 
     /**
-     * Get the value of mealName
+     * Get the value of meal_name
      */ 
-    public function getMealName(): string
+    public function getMeal_name(): string
     {
-        return $this->mealName;
+        return $this->meal_name;
     }
 
     /**
-     * Set the value of mealName
+     * Set the value of meal_name
      *
      * @return  self
      */ 
-    public function setMealName($mealName): self
+    public function setMeal_name($meal_name): self
     {
-        $this->mealName = $mealName;
+        $this->meal_name = $meal_name;
 
         return $this;
     }
 
     /**
-     * Get the value of mealDescription
+     * Get the value of meal_picture
      */ 
-    public function getMealDescription(): string
+    public function getMeal_picture(): string
     {
-        return $this->mealDescription;
+        return $this->meal_picture;
     }
 
     /**
-     * Set the value of mealDescription
+     * Set the value of meal_picture
      *
      * @return  self
      */ 
-    public function setMealDescription($mealDescription): self
+    public function setMeal_picture($meal_picture): self
     {
-        $this->mealDescription = $mealDescription;
+        $this->meal_picture = $meal_picture;
 
         return $this;
     }
 
     /**
-     * Get the value of mealPicture
+     * Get the value of meal_description
      */ 
-    public function getMealPicture(): string
+    public function getMeal_description(): string
     {
-        return $this->mealPicture;
+        return $this->meal_description;
     }
 
     /**
-     * Set the value of mealPicture
+     * Set the value of meal_description
      *
      * @return  self
      */ 
-    public function setMealPicture($mealPicture): self
+    public function setMeal_description($meal_description): self
     {
-        $this->mealPicture = $mealPicture;
+        $this->meal_description = $meal_description;
 
         return $this;
     }
 
     /**
-     * Get the value of mealPrice
+     * Get the value of meal_price
      */ 
-    public function getMealPrice()
+    public function getMeal_price()
     {
-        return $this->mealPrice;
+        return $this->meal_price;
     }
 
     /**
-     * Set the value of mealPrice
+     * Set the value of meal_price
      *
      * @return  self
      */ 
-    public function setMealPrice($mealPrice): self
+    public function setMeal_price($meal_price): self
     {
-        $this->mealPrice = $mealPrice;
+        $this->meal_price = $meal_price;
 
         return $this;
     }

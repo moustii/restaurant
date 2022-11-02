@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand mx-5" href="#"><img class="rounded" src="public/img/logo.png" alt="logo fullsnack" width="100"></a>
+        <a class="navbar-brand mx-5" href="<?=URL?>home"><img class="rounded img-fluid" src="<?=URL?>public/img/logo.png" alt="logo fullsnack" width="100"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,7 +19,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav me-5">
-                <span class="nav-link">Lundi au Samedi de 12h à 14h et de 18h à 22h</span>
+                <span class="nav-link text-white">Lundi au Samedi de 12h à 14h et de 18h à 22h</span>
             </ul>
         </div>
     </div>
