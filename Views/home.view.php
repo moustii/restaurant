@@ -20,17 +20,16 @@
         <?php foreach ($meals as $meal): ?>
         <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative">
-                <div class="col-auto d-none d-md-block">
-                    <img class="rounded img-fluid" width="250" src="<?=URL?>public/img/<?=$meal->meal_picture?>" alt="<?=$meal->meal_name?>">
+                <div class="col-auto col-lg-6 d-inline-block">
+                    <img class="rounded img-fluid" src="<?=URL?>public/img/<?=$meal->meal_picture?>" alt="<?=$meal->meal_name?>">
                 </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                <div class="col col-lg-6 p-4 d-flex flex-column position-static">
                     <h3 class="mb-1 fs-6 fw-bold"><?=$meal->meal_name?></h3>
-                    <p class="card-text mb-auto"><?=$meal->meal_description?></p>
-                    <span class="text-center text-white fw-bold"><?=$meal->meal_price?> €</span>
+                    <p class="card-text mb-3 mb-md-3"><?=$meal->meal_description?></p>
+                    <p class="text-center text-white fw-bold"><?=$meal->meal_price?> €</p>
                 </div>
             </div>
         </div>
         <?php endforeach;?>
-  </div>
-
+    </div>
 </section>
