@@ -4,7 +4,7 @@
     <img src="<?=URL?>public/img/restaurant.jpg" class="img-fluid rounded d-block mx-auto w-100 border border-5" alt="image du restaurant">
 </div>    
 
-<section class="mt-5">
+<section class="mt-5" id="presentation">
     <h2 class="mb-5 text-center font-weight-bold">Presentation</h2>
     <p class="fs-5 text-center fst-italic text-white">
         FullSnack est une enseigne de restauration qui verra le jour dans un futur proche.
@@ -14,7 +14,7 @@
     </p>
 </section>
 
-<section class="mt-5">
+<section class="mt-5" id="menu">
     <h2 class="text-center mb-5">Au menu</h2>
     <div class="row mb-2">
         <?php foreach ($meals as $meal): ?>

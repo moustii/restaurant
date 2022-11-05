@@ -7,15 +7,15 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-5 ">
                 <li class="nav-item mx-4">
-                    <a class="nav-link" href="#">presentation</a>
+                    <a class="nav-link" href="#presentation">presentation</a>
                 </li>
                 <li class="nav-item mx-4">
-                    <a class="nav-link" href="#">menu</a>
+                    <a class="nav-link" href="#menu">menu</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-4 me-md-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-regular fa-user"></i> client</a>
+                    <a class="nav-link" href="<?=URL?>login"><i class="fa-regular fa-user"></i> client</a>
                 </li>
             </ul>
             <ul class="navbar-nav me-5">

@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Site restaurant fullsnack, vente à emporter, réservation, commande">
+    <meta name="description" content="<?=$description?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FullSnack'</title>
+    <title><?=$title?></title>
     <link rel="icon" type="image/png" href="<?=URL?>public/img/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     <div class="container">
         <?= $content ?>
     </div>
-    
+
     <footer>
         <?php require_once 'Views/common/footer.php' ?>
     </footer>
