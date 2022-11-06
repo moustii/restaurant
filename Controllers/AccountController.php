@@ -15,8 +15,7 @@ class AccountController extends MainController
                 if ($user) {
                     // verif password
                     if ($this->checkPassword(htmlentities($_POST['password']), $user->user_password)) {
-                        // header('Location: '.URL.'connected/choice');
-                        echo 'ok';
+                        header('Location: '.URL.'actions');
                     } else {
                         header('Location: '.URL.'login');
                     }
@@ -30,6 +29,15 @@ class AccountController extends MainController
     private function checkPassword(string $password, string $dbPassword)
     {
         return (password_verify($password, $dbPassword)); 
+    }
+
+    public function makeChoice()
+    {
+        $data_page = [
+            "description" => "Site restaurant fullsnack, vente à emporter, réservation, commande, page choix, commander ou reserver",
+            "title" => "commander ou reserver",
+        ];
+        $this->render('actions/action.view', $data_page);
     }
     
 

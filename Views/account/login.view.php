@@ -15,8 +15,8 @@
         <button class="w-100 btn btn-md btn-primary" type="submit">Se connecter</button>
     </form>
     <div class="d-flex flex-column align-items-end mt-2">
-        <a class="text-white btn disabled" href="">mot de passe oublié</a>
-        <a class="text-white" href="<?=URL?>create_account">créer un compte</a>
+        <a class="text-white btn disabled m-2" href="">mot de passe oublié</a>
+        <a class="text-white m-2" href="<?=URL?>create_account">créer un compte</a>
     </div>
 </div>
 

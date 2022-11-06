@@ -32,6 +32,19 @@ try {
                 break;
             case 'create_account': $homeController->createAccount();
                 break;
+            case 'actions': 
+                if (!empty($url[1])) {
+                        switch ($url[1]) {
+                            case 'order': echo 'in progress...';
+                                break;
+                            case 'booking': echo 'in progress...';
+                                break;
+                            default: throw new Exception("La page n'existe pas");
+                        }
+                } else {
+                    $AccountController->makeChoice();
+                }
+                break;
             default: throw new Exception("La page n'existe pas");
         }
     }

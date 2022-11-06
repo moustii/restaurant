@@ -33,7 +33,7 @@ class HomeController extends MainController
             "description" => "Site restaurant fullsnack, vente à emporter, réservation, commande, page login",
             "title" => "création du compte client",
         ];
-        $this->render('account/create_account.view');
+        $this->render('account/create_account.view', $data_page);
     }
 
     public function error($msg)
