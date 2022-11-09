@@ -32,10 +32,12 @@ try {
                 break;
             case 'create_account': $homeController->createAccount();
                 break;
+            case 'check_account': $AccountController->checkAccount(); 
+                break;
             case 'actions': 
                 if (!empty($url[1])) {
                         switch ($url[1]) {
-                            case 'order': echo 'in progress...';
+                            case 'order': $AccountController->orderForm();
                                 break;
                             case 'booking': echo 'in progress...';
                                 break;
@@ -51,4 +53,3 @@ try {
 }catch (Exception $e) {
     $homeController->error($e->getMessage());
 }
-

@@ -23,6 +23,19 @@ abstract class MainController
         $this->render('error.view', $data_page);
     }
 
+    // public static function secureHTML($string)
+    // {
+    //     return htmlentities($string);
+    // }
+    
+    public static function cleanedData(string $data): string
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
 
 
 }

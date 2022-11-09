@@ -11,15 +11,16 @@ class AccountController extends MainController
     {
             if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 $userModel = new User();
-                $user = $userModel->findUserByEmail(htmlentities($_POST['email']));           
+                $user = $userModel->findUserByEmail($this->cleanedData($_POST['email']));           
                 if ($user) {
                     // verif password
-                    if ($this->checkPassword(htmlentities($_POST['password']), $user->user_password)) {
+                    if ($this->checkPassword($this->cleanedData($_POST['password']), $user->user_password)) {
                         header('Location: '.URL.'actions');
                     } else {
                         header('Location: '.URL.'login');
                     }
                 } else {
+                    header('Location: '.URL.'login');
                 }
             } else {
                 header('Location: '.URL.'login');
@@ -38,6 +39,39 @@ class AccountController extends MainController
             "title" => "commander ou reserver",
         ];
         $this->render('actions/action.view', $data_page);
+    }
+
+    public function checkAccount()
+    {
+        if (!empty($_POST)) {
+            $fname = $this->cleanedData($_POST['fname']);
+            $lname = $this->cleanedData($_POST['lname']);
+            $address = $this->cleanedData($_POST['address']);
+            $code = $this->cleanedData($_POST['code']);
+            $city = $this->cleanedData($_POST['city']);
+            $phone = $this->cleanedData($_POST['phone']);
+            $email = $this->cleanedData($_POST['email']);
+            $password = password_hash($this->cleanedData($_POST['password']), PASSWORD_DEFAULT);
+
+            $userModel = new User();
+            $newUser = $userModel->addNewUser($fname, $lname, $address, $code, $city, $phone, $email, $password);
+            if ($newUser) {
+                header('Location: '.URL.'actions');
+            } else {
+                header('Location: '.URL.'login');
+            }
+        } else {
+            header('Location: '.URL.'create_account');
+        }
+    }
+
+    public function orderForm()
+    {
+        $data_page = [
+            "description" => "Site restaurant fullsnack, vente à emporter, page de commande",
+            "title" => "FullSnack",
+        ];
+        $this->render('actions/order.view', $data_page);
     }
     
 
