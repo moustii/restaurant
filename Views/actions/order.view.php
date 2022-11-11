@@ -1,3 +1,10 @@
+<?php if (isset($alert)): ?>
+    <div class="alert alert-dismissible alert-<?=$alert?>">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p><?=$mess?></p>
+    </div>
+<?php endif; ?>
+
 <div class="p-4 mt-4 bg-light rounded">
     <h1>Commande</h1>
 

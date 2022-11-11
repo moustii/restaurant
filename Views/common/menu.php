@@ -1,3 +1,7 @@
+<?php
+
+use App\Controllers\AccountController;
+?>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand mx-0 mx-md-5" href="<?=URL?>home"><img class="rounded img-fluid" src="<?=URL?>public/img/logo.png" alt="logo fullsnack" width="100"></a>
@@ -14,9 +18,16 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-4 me-md-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=URL?>login"><i class="fa-regular fa-user"></i> client</a>
+                <li class="nav-item me-4">
+                    <a class="nav-link" href="<?=URL?>login"><i class="fa-regular fa-user"></i>
+                        <?= (AccountController::isConnected())? $_SESSION['user']['fname'] : 'client' ?>
+                    </a>
                 </li>
+                <?php if(AccountController::isConnected()): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL?>logout"><i class="fa-solid fa-right-from-bracket"></i> déconnexion</a>
+                </li>
+                <?php endif; ?>
             </ul>
             <ul class="navbar-nav me-5">
                 <span class="d-none d-lg-block nav-link text-white">Lundi au Samedi de 12h à 14h et de 18h à 22h</span>

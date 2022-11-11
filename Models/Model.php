@@ -59,11 +59,12 @@ class Model extends Db
      return $result;
    }
 
-   public function addOrder($price)
+   public function addOrder($user_id, $price)
    {
      $this->db = Db::getInstance();
-     $sql = 'INSERT INTO '. $this->table .' (command_date, user_id, command_price) VALUES (NOW(), 1, :price)';
+     $sql = 'INSERT INTO '. $this->table .' (command_date, user_id, command_price) VALUES (NOW(), :user_id, :price)';
      $stmt = $this->db->prepare($sql);
+     $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
      $stmt->bindValue(':price', $price, PDO::PARAM_STR);
      $stmt->execute();
      

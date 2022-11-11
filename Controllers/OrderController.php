@@ -22,27 +22,21 @@ class OrderController extends MainController
             $totalPrice = number_format($price, 2);
 
             $command = new Command();
-            $idCommand = $command->addOrder($totalPrice);
+            $idCommand = $command->addOrder($_SESSION['user']['id'], $totalPrice);
 
             $listCommand = new ListCommand();
             $listCommand->addDetailsOrder($idCommand, $order);
 
+            $data_page = [
+                'alert' => 'success',
+                'mess' => 'votre commande a bien été validé'
+            ];
+            $this->render('actions/order.view', $data_page);
 
 
         } else {
-            header('Location: '.URL.'home');
+            header('Location: '.URL.'actions/order');
         }
     }
-
-    
-
-
-
-
-
-
-
-
-
     
 }

@@ -31,7 +31,12 @@ try {
         switch ($page) {
             case 'home': $homeController->index();
                 break;
-            case 'login': $homeController->login();
+            case 'login': 
+                if (!AccountController::isConnected()) {
+                    $homeController->login();
+                } else {
+                    $AccountController->makeChoice();
+                }
                 break;
             case 'check_connexion': $AccountController->checkConnexion();
                 break;
@@ -40,36 +45,43 @@ try {
             case 'check_account': $AccountController->checkAccount(); 
                 break;
             case 'actions': 
-                if (!empty($url[1])) {
-                    switch ($url[1]) {
-                        case 'order': 
-                            if (!empty($url[2]) && !empty($url[3])) {
-                                switch ($url[2]) {
-                                    case 'ajax_actions':
-                                        if (!empty($url[4])) {
-                                            $order = (string)$url[3];
-                                            $totalPrice = number_format($url[4], 2);
-                                            $OrderController->getJsonMeal($order, $totalPrice);
-                                        } else {
-                                            $meal_id = (int)$url[3];
-                                            $OrderController->getJsonMeal($meal_id, null);
-                                        }
-                                        break;
-                                    default: throw new Exception("La page n'existe pas");
+                if (AccountController::isConnected()) {
+
+                    if (!empty($url[1])) {
+                        switch ($url[1]) {
+                            case 'order': 
+                                if (!empty($url[2]) && !empty($url[3])) {
+                                    switch ($url[2]) {
+                                        case 'ajax_actions':
+                                            if (!empty($url[4])) {
+                                                $order = (string)$url[3];
+                                                $totalPrice = number_format($url[4], 2);
+                                                $OrderController->getJsonMeal($order, $totalPrice);
+                                            } else {
+                                                $meal_id = (int)$url[3];
+                                                $OrderController->getJsonMeal($meal_id, null);
+                                            }
+                                            break;
+                                        default: throw new Exception("La page n'existe pas");
+                                    }
+                                } else {
+                                    $AccountController->orderForm();
                                 }
-                            } else {
-                                $AccountController->orderForm();
-                            }
-                            break;
-                        case 'booking': echo 'in progress...';
-                            break;
-                        default: throw new Exception("La page n'existe pas");
+                                break;
+                            case 'booking': echo 'in progress...';
+                                break;
+                            default: throw new Exception("La page n'existe pas");
+                        }
+                    } else {
+                        $AccountController->makeChoice();
                     }
                 } else {
-                    $AccountController->makeChoice();
+                    header('Location: '.URL.'login');
                 }
                 break;
-           
+            case 'logout': $AccountController->logout();
+                break;
+
             default: throw new Exception("La page n'existe pas");
         }
     }

@@ -87,23 +87,14 @@ class AccountController extends MainController
         }
         return false;
     }
-    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function logout()
+    {
+        $_SESSION = [];
+        session_unset();
+        session_destroy();
+        header('Location: '.URL.'home');
+    }
 
     
 }
