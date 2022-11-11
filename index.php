@@ -1,16 +1,21 @@
 <?php
+session_start();
 
 use App\Autoloader;
 use App\Controllers\HomeController;
+use App\Controllers\OrderController;
 use App\Controllers\AccountController;
 
 define('URL', str_replace('index.php', '', (isset($_SERVER['HTTPS'])? 'https':'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']));
+
+// date_default_timezone_set('Europe/Paris');
 
 require_once 'Autoloader.php';
 Autoloader::register();
 
 $homeController = new HomeController();
 $AccountController = new AccountController();
+$OrderController = new OrderController();
 
 try {
 
@@ -36,17 +41,35 @@ try {
                 break;
             case 'actions': 
                 if (!empty($url[1])) {
-                        switch ($url[1]) {
-                            case 'order': $AccountController->orderForm();
-                                break;
-                            case 'booking': echo 'in progress...';
-                                break;
-                            default: throw new Exception("La page n'existe pas");
-                        }
+                    switch ($url[1]) {
+                        case 'order': 
+                            if (!empty($url[2]) && !empty($url[3])) {
+                                switch ($url[2]) {
+                                    case 'ajax_actions':
+                                        if (!empty($url[4])) {
+                                            $order = (string)$url[3];
+                                            $totalPrice = number_format($url[4], 2);
+                                            $OrderController->getJsonMeal($order, $totalPrice);
+                                        } else {
+                                            $meal_id = (int)$url[3];
+                                            $OrderController->getJsonMeal($meal_id, null);
+                                        }
+                                        break;
+                                    default: throw new Exception("La page n'existe pas");
+                                }
+                            } else {
+                                $AccountController->orderForm();
+                            }
+                            break;
+                        case 'booking': echo 'in progress...';
+                            break;
+                        default: throw new Exception("La page n'existe pas");
+                    }
                 } else {
                     $AccountController->makeChoice();
                 }
                 break;
+           
             default: throw new Exception("La page n'existe pas");
         }
     }

@@ -22,7 +22,7 @@ class Model extends Db
    public function findUserByEmail(string $email)
    {
         $this->db = Db::getInstance();
-        $sql = 'SELECT user_email, user_password FROM '. $this->table .' WHERE user_email = :email' ;
+        $sql = 'SELECT user_id, user_fname, user_lname, user_email, user_password FROM '. $this->table .' WHERE user_email = :email' ;
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -48,7 +48,46 @@ class Model extends Db
         return $stmt->rowCount();
    }
 
+   public function findMealById($id)
+   {
+     $this->db = Db::getInstance();
+     $sql = 'SELECT meal_id, meal_name, meal_description, meal_picture, meal_price FROM '. $this->table .' WHERE meal_id = :id' ;
+     $stmt = $this->db->prepare($sql);
+     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+     $stmt->execute();
+     $result = $stmt->fetch();
+     return $result;
+   }
 
+   public function addOrder($price)
+   {
+     $this->db = Db::getInstance();
+     $sql = 'INSERT INTO '. $this->table .' (command_date, user_id, command_price) VALUES (NOW(), 1, :price)';
+     $stmt = $this->db->prepare($sql);
+     $stmt->bindValue(':price', $price, PDO::PARAM_STR);
+     $stmt->execute();
+     
+     return $this->db->lastInsertId();
+   }
+
+   public function addDetailsOrder($idCommand, $order) 
+   {
+     foreach ($order as $ligne) {
+          $meal_id = $ligne[0]->meal_id;
+          $quantity = $ligne[1];
+          $meal_price = $ligne[0]->meal_price;
+     }
+     $this->db = Db::getInstance();
+     $sql = 'INSERT INTO '. $this->table .' (command_id, meal_id, list_command_quantity, list_command_unit_price) VALUES (:idCommand, :meal_id, :quantity, :meal_price)';
+     $stmt = $this->db->prepare($sql);
+     $stmt->bindValue(':idCommand', $idCommand, PDO::PARAM_INT);
+     $stmt->bindValue(':meal_id', $meal_id, PDO::PARAM_INT);
+     $stmt->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+     $stmt->bindValue(':meal_price', $meal_price, PDO::PARAM_STR);
+     $stmt->execute();
+
+
+   }
 
 
 

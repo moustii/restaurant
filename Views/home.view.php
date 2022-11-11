@@ -18,12 +18,12 @@
     <h2 class="text-center mb-5">Au menu</h2>
     <div class="row mb-2">
         <?php foreach ($meals as $meal): ?>
-        <div class="col-md-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative">
-                <div class="col-auto col-lg-6 d-inline-block">
+                <div class="col-sm-12 col-md-12 col-lg-6 d-inline-block">
                     <img class="rounded img-fluid" src="<?=URL?>public/img/<?=$meal->meal_picture?>" alt="<?=$meal->meal_name?>">
                 </div>
-                <div class="col col-lg-6 p-4 d-flex flex-column position-static">
+                <div class="col-sm-12 col-md-12 col-lg-6 p-4 d-flex flex-column position-static">
                     <h3 class="mb-1 fs-6 fw-bold"><?=$meal->meal_name?></h3>
                     <p class="card-text mb-3 mb-md-3"><?=$meal->meal_description?></p>
                     <p class="text-center text-white fw-bold"><?=$meal->meal_price?> €</p>

@@ -15,6 +15,9 @@ class AccountController extends MainController
                 if ($user) {
                     // verif password
                     if ($this->checkPassword($this->cleanedData($_POST['password']), $user->user_password)) {
+                        $_SESSION['user']['id'] = $user->user_id;
+                        $_SESSION['user']['fname'] = $user->user_fname;
+                        $_SESSION['user']['lname'] = $user->user_lname;
                         header('Location: '.URL.'actions');
                     } else {
                         header('Location: '.URL.'login');
@@ -67,11 +70,22 @@ class AccountController extends MainController
 
     public function orderForm()
     {
+        $mealsModel = new Meal();
+        $meals = $mealsModel->findAll();
         $data_page = [
             "description" => "Site restaurant fullsnack, vente à emporter, page de commande",
             "title" => "FullSnack",
+            "meals" => $meals
         ];
         $this->render('actions/order.view', $data_page);
+    }
+
+    public static function isConnected()
+    {
+        if (isset($_SESSION['user'])) {
+            return true;
+        }
+        return false;
     }
     
 
