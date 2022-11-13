@@ -80,6 +80,15 @@ class AccountController extends MainController
         $this->render('actions/order.view', $data_page);
     }
 
+    public function bookingForm()
+    {
+        $data_page = [
+            "description" => "Site restaurant fullsnack, vente à emporter, page de réservation",
+            "title" => "FullSnack",
+        ];
+        $this->render('actions/booking.view', $data_page);
+    }
+
     public static function isConnected()
     {
         if (isset($_SESSION['user'])) {

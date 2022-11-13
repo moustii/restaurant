@@ -74,8 +74,6 @@ class Model extends Db
 
    public function addDetailsOrder($idCommand, $order) 
    {
-
-
       $this->db = Db::getInstance();
       $sql = 'INSERT INTO '. $this->table .' (command_id, meal_id, list_command_quantity, list_command_unit_price) VALUES (:idCommand, :meal_id, :quantity, :meal_price)';
       $stmt = $this->db->prepare($sql);
@@ -92,7 +90,18 @@ class Model extends Db
       $stmt->closeCursor();
 
       return $stmt->rowCount();
+   }
 
+   public function insertBooking($user_id, $dateTime, $guests)
+   {
+      $this->db = Db::getInstance();
+      $sql = 'INSERT INTO '.$this->table .' (user_id, booking_date, booking_guests) VALUES (:user_id, :dateTime, :guests)';
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+      $stmt->bindValue(':dateTime', $dateTime, PDO::PARAM_STR);
+      $stmt->bindValue(':guests', $guests, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->rowCount();
    }
 
 

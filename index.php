@@ -5,6 +5,7 @@ use App\Autoloader;
 use App\Controllers\HomeController;
 use App\Controllers\OrderController;
 use App\Controllers\AccountController;
+use App\Controllers\BookingController;
 
 define('URL', str_replace('index.php', '', (isset($_SERVER['HTTPS'])? 'https':'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']));
 
@@ -16,6 +17,7 @@ Autoloader::register();
 $homeController = new HomeController();
 $AccountController = new AccountController();
 $OrderController = new OrderController();
+$BookingController = new BookingController();
 
 try {
 
@@ -68,7 +70,12 @@ try {
                                     $AccountController->orderForm();
                                 }
                                 break;
-                            case 'booking': echo 'in progress...';
+                            case 'booking': 
+                                if (!empty($url[2])) {
+                                    $BookingController->sendBooking();
+                                } else {
+                                    $AccountController->bookingForm();
+                                }
                                 break;
                             default: throw new Exception("La page n'existe pas");
                         }
