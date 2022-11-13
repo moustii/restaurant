@@ -19,6 +19,7 @@ class OrderController extends MainController
 
         } else if (!empty($price)) {
             $order = json_decode($data);
+            var_dump($order);
             $totalPrice = number_format($price, 2);
 
             $command = new Command();
@@ -26,13 +27,6 @@ class OrderController extends MainController
 
             $listCommand = new ListCommand();
             $listCommand->addDetailsOrder($idCommand, $order);
-
-            $data_page = [
-                'alert' => 'success',
-                'mess' => 'votre commande a bien été validé'
-            ];
-            $this->render('actions/order.view', $data_page);
-
 
         } else {
             header('Location: '.URL.'actions/order');

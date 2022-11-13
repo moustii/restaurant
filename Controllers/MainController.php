@@ -6,8 +6,8 @@ abstract class MainController
 {
     protected function render(string $file, array|null $datas = [])
     {
-        extract($datas);
         ob_start();
+        extract($datas);
         require_once 'Views/'.$file.'.php';
         $content = ob_get_clean();
         require_once 'Views/common/template.php';

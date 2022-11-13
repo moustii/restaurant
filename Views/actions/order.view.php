@@ -1,9 +1,7 @@
-<?php if (isset($alert)): ?>
-    <div class="alert alert-dismissible alert-<?=$alert?>">
+<div class="alert alert-dismissible alert-success px-2 py-3 mt-3 d-none" id="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <p><?=$mess?></p>
-    </div>
-<?php endif; ?>
+        <strong>Commande Validée !</strong>
+</div>
 
 <div class="p-4 mt-4 bg-light rounded">
     <h1>Commande</h1>
@@ -25,7 +23,7 @@
                 </div>
 
                 <label for='quantity'></label>
-                <input type='number' name='quantity' id='quantity' value="1" min='1' max="15" class="form-control form-control-sm w-25">
+                <input type='number' name='quantity' id='quantity' value="1" min='1' max="15" class="form-control form-control-sm w-25" placeholder="quantité" required autofocus>
                 <hr class="mb-4">
                 <input type='button' name='add' id='add' value='ajouter' class="form-control form-control-sm btn btn-sm btn-primary w-25">
             </form>
