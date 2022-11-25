@@ -34,8 +34,8 @@
                 </div>
 
                 <div class="col-md-5">
-                    <label for="phone" class="form-label">N°Téléphone <span class="text-muted">(*Obligatoire)</span></label>
-                    <input type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{10}" placeholder="Numéro de téléphone" required>
+                    <label for="phone" class="form-label">Tel <span class="text-muted">(*Obligatoire)</span></label>
+                    <input type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{10}" placeholder="N° téléphone" required>
                 </div>
 
                 <div class="col-12">

@@ -7,10 +7,10 @@
     <h1>Commande</h1>
 
     <div class="row mt-5">
-        <div class="col-md-7 col-lg-7">
+        <div class="col-12 col-lg-7 text-center text-lg-start">
             <form>
                 <label for='product'>Menu</label>
-                <select class="form-select w-50" name='product' id='product' class="rounded">
+                <select class="form-select w-50 mx-auto ms-lg-0" name='product' id='product' class="rounded">
                     <?php foreach($meals as $meal): ?>
                         <option value=<?= $meal->meal_id ?>> <?= $meal->meal_name ?> </option>
                     <?php endforeach; ?>
@@ -18,22 +18,24 @@
 
                 <div class="mt-4" id='productDetails'>
                     <img src='' class="img-fluid rounded w-50" alt=''>
-                    <p class="mt-3 text-white w-50"></p>
+                    <p class="mt-3 text-white w-50 mx-auto ms-lg-0"></p>
                     <span class="fs-3 text-white"></span>
                 </div>
 
                 <label for='quantity'></label>
-                <input type='number' name='quantity' id='quantity' value="1" min='1' max="15" class="form-control form-control-sm w-25" placeholder="quantité" required autofocus>
+                <input type='number' name='quantity' id='quantity' value="1" min='1' max="15" class="form-control form-control-sm w-25 mx-auto ms-lg-0" placeholder="quantité" required autofocus>
                 <hr class="mb-4">
                 <input type='button' name='add' id='add' value='ajouter' class="form-control form-control-sm btn btn-sm btn-primary w-25">
             </form>
         </div>
 
-        <div class="col-md-5 col-lg-5">
+        <div class="col-12 col-lg-5 mt-5">
             <form id='formValidPanier'>
-                <table class="table table-dark gy-5 text-white" id='panier'>
+                <div class="table-responsive">
+                    <table class="table table-dark gy-5 text-white" id='panier'>
                         
-                </table>
+                    </table>
+                </div>
                 <input type='button' class='btn btn-success' name='validate' id='validate' value='valider la commande' hidden>
             </form>
         </div>
