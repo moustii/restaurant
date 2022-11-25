@@ -21,6 +21,5 @@ pages :
     - page admin
     
 ### A faire :
-  - gestion des erreurs et accès interdit par url
-  - formulaire verif donnees ("veuillez saisir un code valide...") 
   - partie admin back office : visualiser les repas, les users, les commandes, les réservations
+  - et pleins d'autres 
